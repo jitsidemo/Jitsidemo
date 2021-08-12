@@ -33,7 +33,7 @@ pipeline {
 
         stage('deploy on production'){
               when{
-                    expression{ env.GIT_BRANCH =='origin/production'}
+                    expression{ env.GIT_BRANCH =='origin/dev'}
                   }
 
             steps {
