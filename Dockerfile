@@ -7,3 +7,4 @@ EXPOSE 8091
 
 ENTRYPOINT ["java","-jar","jitsidemobackend.jar"]
 
+

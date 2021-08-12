@@ -31,13 +31,13 @@ pipeline {
             }
         }
 
+
         stage('deploy on development'){
               when{
                     expression{ env.GIT_BRANCH =='origin/dev'}
                   }
 
             steps {
-
                      sh 'docker stop $(docker ps --filter publish=8090/tcp -q)'
                      sh 'docker run -itd -p 8090:8090 jitsidemo/jitsi_backend:${BUILD_NUMBER}'
             }
@@ -48,11 +48,10 @@ pipeline {
          when{
                 expression{ env.GIT_BRANCH =='origin/master'}
               }
-                    steps {
-
-                            sh 'docker stop $(docker ps --filter publish=8091/tcp -q)'
-                            sh 'docker run -itd -p  8091:8091 jitsidemo/jitsi_backend:${BUILD_NUMBER}'
-                          }
+              steps {
+                     sh 'docker stop $(docker ps --filter publish=8091/tcp -q)'
+                     sh 'docker run -itd -p  8091:8091 jitsidemo/jitsi_backend:${BUILD_NUMBER}'
+                    }
             }
 
 
