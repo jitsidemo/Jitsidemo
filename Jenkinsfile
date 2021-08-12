@@ -27,7 +27,7 @@ pipeline {
 
         stage('Docker Push'){
             steps {
-                sh 'docker push jitsidemo/jitsidemobackend:${BUILD_NUMBER}'
+                sh 'docker push jitsidemo/jitsi_backend:${BUILD_NUMBER}'
             }
         }
 
@@ -38,8 +38,8 @@ pipeline {
 
             steps {
 
-                     sh 'docker stop $(docker ps --filter publish=8082/tcp -q)'
-                     sh 'docker run -itd -p 8082:8082 jitsidemo/jitsidemobackend:${BUILD_NUMBER}'
+//                      sh 'docker stop $(docker ps --filter publish=8082/tcp -q)'
+                     sh 'docker run -itd -p 8090:8090 jitsidemo/jitsi_backend:${BUILD_NUMBER}'
             }
         }
 
@@ -50,8 +50,8 @@ pipeline {
               }
                     steps {
 
-                            sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
-                            sh 'docker run -itd -p  8081:8081 jitsidemo/jitsidemobackend:${BUILD_NUMBER}'
+//                             sh 'docker stop $(docker ps --filter publish=8081/tcp -q)'
+                            sh 'docker run -itd -p  8091:8091 jitsidemo/jitsi_backend:${BUILD_NUMBER}'
                           }
             }
 
